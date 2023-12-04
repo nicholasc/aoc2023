@@ -18,12 +18,12 @@ fn main() {
                 let item: Vec<&str> = i.trim().split(" ").collect();
                 let num = item[0].parse::<u32>().unwrap();
 
-                match (item[1], num) {
-                    ("red", num) if num > 12 => valid = false,
-                    ("green", num) if num > 13 => valid = false,
-                    ("blue", num) if num > 14 => valid = false,
-                    _ => {}
-                }
+                valid = match (item[1], num) {
+                    ("red", num) if num > 12 => false,
+                    ("green", num) if num > 13 => false,
+                    ("blue", num) if num > 14 => false,
+                    _ => valid,
+                };
 
                 #[rustfmt::skip]
                 map.entry(item[1])
