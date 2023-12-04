@@ -25,12 +25,9 @@ fn main() {
                     _ => {}
                 }
 
+                #[rustfmt::skip]
                 map.entry(item[1])
-                    .and_modify(|n| {
-                        if *n < num {
-                            *n = num
-                        }
-                    })
+                    .and_modify(|n| if *n < num { *n = num })
                     .or_insert(num);
             });
         });
